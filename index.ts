@@ -1,5 +1,3 @@
-import home from './public/index.html';
-
 const appName = process.env.APP_NAME || "unknown-app";
 
 const getDate = () => new Date().toLocaleString().split(",")[1];
@@ -8,9 +6,7 @@ const server = Bun.serve({
     routes: {
         "/": (req) => {
             console.log(`[${appName}][${getDate()}] Handling request to /`);
-            return new Response(home as any, {
-                headers: { "Content-Type": "text/html" }
-            });
+            return new Response(Bun.file("./public/index.html"));
         },
         "/api/health": (req) => {
             console.log(`[${appName}][${getDate()}] Handling request to /api/health`);
