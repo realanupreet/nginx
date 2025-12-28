@@ -12,7 +12,7 @@ const server = Bun.serve({
             console.log(`[${appName}][${getDate()}] Handling request to /api/health`);
             return new Response("OK");
         },
-        "/favicon.ico": Bun.file("./favicon.ico"),
+        "/favicon.png": Bun.file("./public/favicon.png"),
     },
     fetch(req) {
         console.log(`[${appName}] 404 - ${getDate()} - ${new URL(req.url).pathname}`);
