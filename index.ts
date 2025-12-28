@@ -1,14 +1,27 @@
-import home from './public/index.html'
+import home from './public/index.html';
+
+const appName = process.env.APP_NAME || "unknown-app";
+
+const getDate = () => new Date().toLocaleString().split(",")[1];
 
 const server = Bun.serve({
     routes: {
-        "/": home,
-        "/api/health": new Response("OK"),
+        "/": (req) => {
+            console.log(`[${appName}][${getDate()}] Handling request to /`);
+            return new Response(home as any, {
+                headers: { "Content-Type": "text/html" }
+            });
+        },
+        "/api/health": (req) => {
+            console.log(`[${appName}][${getDate()}] Handling request to /api/health`);
+            return new Response("OK");
+        },
         "/favicon.ico": Bun.file("./favicon.ico"),
     },
     fetch(req) {
+        console.log(`[${appName}] 404 - ${getDate()} - ${new URL(req.url).pathname}`);
         return new Response("Not Found", { status: 404 });
     },
 });
 
-console.log(`Server running at ${server.url}`);
+console.log(`Server [${appName}] [${getDate()}] running at ${server.url}`);
