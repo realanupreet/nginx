@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POP SUMMER 2026</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comic+Neue:wght@700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <style>
+    :root {
+      --pink: #ff2f92;
+      --yellow: #ffe600;
+      --cyan: #00f6ff;
+      --black: #111;
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Comic Neue', cursive;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--yellow),
+        var(--yellow) 20px,
+        var(--pink) 20px,
+        var(--pink) 40px
+      );
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero {
+      background: var(--white);
+      border: 8px solid var(--black);
+      padding: 3rem 4rem;
+      text-align: center;
+      box-shadow: 12px 12px 0 var(--black);
+    }
+
+    .hero h1 {
+      font-family: 'Rubik Mono One', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      letter-spacing: 4px;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      margin: 1rem 0 2rem;
+    }
+
+    .cta {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      background: var(--cyan);
+      padding: 1rem 2.5rem;
+      font-size: 1.6rem;
+      border: 4px solid var(--black);
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--black);
+      box-shadow: 6px 6px 0 var(--black);
+      transition: transform 0.15s ease;
+    }
+
+    .cta:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 10px 10px 0 var(--black);
+    }
+
+    .sun {
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, var(--yellow) 60%, var(--pink) 61%);
+      border-radius: 50%;
+      border: 8px solid var(--black);
+    }
+
+    .stickers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      padding: 5rem 10vw;
+    }
+
+    .card {
+      background: var(--white);
+      border: 6px solid var(--black);
+      padding: 1.5rem;
+      box-shadow: 8px 8px 0 var(--black);
+      transform: rotate(var(--r));
+    }
+
+    .card img {
+      width: 100%;
+      border: 4px solid var(--black);
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+    }
+
+    footer {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="sun"></div>
+    <div class="hero">
+      <h1>POP SUMMER</h1>
+      <p>Hot days. Loud colors. Endless vibes.</p>
+      <a class="cta" href="#stickers">FEEL THE HEAT</a>
+    </div>
+  </header>
+
+  <section id="stickers" class="stickers">
+    <div class="card" style="--r:-3deg">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach">
+      <h3>BEACH MODE</h3>
+      <p>Salt, sun & summer freedom.</p>
+    </div>
+
+    <div class="card" style="--r:2deg">
+      <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98" alt="Ice Cream">
+      <h3>ICE CREAM DAYS</h3>
+      <p>Melting moments, sweet chaos.</p>
+    </div>
+
+    <div class="card" style="--r:-2deg">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Road Trip">
+      <h3>ROAD TRIPS</h3>
+      <p>No maps. Just music.</p>
+    </div>
+  </section>
+
+  <footer>
+    SUMMER IS LOADING ☀️
+  </footer>
+
+  <script>
+    anime({
+      targets: '.hero',
+      scale: [0.8, 1],
+      opacity: [0, 1],
+      easing: 'easeOutElastic(1, .8)',
+      duration: 1400
+    });
+
+    anime({
+      targets: '.sun',
+      rotate: 360,
+      duration: 20000,
+      easing: 'linear',
+      loop: true
+    });
+
+    anime({
+      targets: '.card',
+      translateY: [60, 0],
+      opacity: [0, 1],
+      delay: anime.stagger(200),
+      easing: 'easeOutExpo'
+    });
+  </script>
+
+</body>
+</html>
